@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import java.security.AccessControlContext
+import kotlinx.coroutines.CoroutineScope
 
 @Database(entities = [Useful::class], version = 1)
 abstract class UsefulDatabase : RoomDatabase(){
@@ -16,7 +16,7 @@ abstract class UsefulDatabase : RoomDatabase(){
         @Volatile
         private var INSTANCE : UsefulDatabase? = null
 
-        fun getDatabase(context: Context): UsefulDatabase{
+        fun getDatabase(context: Context, scope: CoroutineScope): UsefulDatabase{
             val tempDb = INSTANCE
             if(tempDb != null){
                 return tempDb

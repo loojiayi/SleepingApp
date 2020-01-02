@@ -12,7 +12,7 @@ class UsefulAdapter internal constructor(context: Context): RecyclerView.Adapter
     private val inflater: LayoutInflater = LayoutInflater.from(context)
 
     //A reference to Useful record(s)
-    private val usefulRecords = emptyList<Useful>()
+    private var usefulRecords = emptyList<Useful>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsefulViewHolder {
         val itemView = inflater.inflate(R.layout.recyclerview_item, parent, false)
@@ -37,4 +37,10 @@ class UsefulAdapter internal constructor(context: Context): RecyclerView.Adapter
 
         val textViewAge: TextView = itemView.findViewById(R.id.textViewAge)
     }
+
+    internal fun setUsefulRecords(usefulRecords: List<Useful>){
+        this.usefulRecords = usefulRecords
+        notifyDataSetChanged()
+    }
+
 }

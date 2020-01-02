@@ -14,7 +14,7 @@ class UsefulViewModel (application: Application) : AndroidViewModel(application)
     val allUseful : LiveData<List<Useful>>
 
     init {
-        val usefulDao = UsefulDatabase.getDatabase(application).usefulDao()
+        val usefulDao = UsefulDatabase.getDatabase(application, viewModelScope).usefulDao()
 
         usefulRepository = UsefulRepository(usefulDao)
         allUseful = usefulRepository.allUseful
